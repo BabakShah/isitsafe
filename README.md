@@ -1,16 +1,16 @@
 # _**Is it safe? Project**_
 
-###Team Name: 
+### Team Name: 
 Team Purple Cobras
 
-###Project title: 
+### Project title: 
 Is it safe?
 
-###Team Members: 
+### Team Members: 
 Brian, Kiwon, Paige, Babak
-###Project Description:
+### Project Description:
 
-###Sketch of Final Product:
+### Sketch of Final Product:
 1. Type in location
 
 2. User chooses from list of options they want want to check
@@ -26,7 +26,7 @@ Click on data points for details
 
 5. List shows up with our Firebase data (Previous search by area, popular search,....)
 
-###APIs to be Used:
+### APIs to be Used:
 
 - Google Maps: https://developers.google.com/maps/
 - Crime API: 
@@ -34,9 +34,9 @@ http://api1.chicagopolice.org/clearpath/ (If we just want to concentrate on Chic
 https://www.data.gov/safety/
 http://blog.spotcrime.com/search?q=api
 
-###Libraries to be used:
-###Rough Breakdown of Tasks:
-#####1. Front End:
+### Libraries to be used:
+### Rough Breakdown of Tasks:
+##### 1. Front End:
 
 * UI
 
@@ -46,7 +46,7 @@ http://blog.spotcrime.com/search?q=api
 
 * Js file - second library for something like animation
 
-#####2. Back End:
+##### 2. Back End:
 
 * Firebase
 
@@ -57,8 +57,8 @@ http://blog.spotcrime.com/search?q=api
 * Js (Js file for each api)
 
 ### Links:
-#####Google Doc: 
+##### Google Doc: 
 https://docs.google.com/document/d/1hy6Pjz0s3_vJdmFErw4F8Mrh9seqq0LSm68hlnnyRHM/edit#
 
-#####GitHub Repo: 
+##### GitHub Repo: 
 https://github.com/Team-Purple-Cobras/isitsafe
