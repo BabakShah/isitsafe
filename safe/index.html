@@ -1,21 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<title>Is It Safe?</title>
 	<!-- css links -->
 	<link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
-	<link rel="stylesheet" href="assets/css/style.css">
+	<!--
+	<link rel="stylesheet" href="assets/css/style.css">-->
 
 	<!-- js links -->
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
-	<script type="text/javascript" src="assets/js/javascript.js"></script>
+<!-- 	<script type="text/javascript" src="assets/js/javascript.js"></script>
 	<script type="text/javascript" src="assets/js/api1.js"></script>
-	<script type="text/javascript" src="assets/js/api2.js"></script>
-	<script type="text/javascript" src="assets/js/api3.js"></script>
+	<script type="text/javascript" src="assets/js/api2.js"></script> -->
+	
+
+	
+	
+   <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+
 </head>
+
 
 <body>
 
@@ -47,8 +67,11 @@
 			</form>
 
 		</div> <!-- end sumbit div -->
+	</div> <!-- end container div -->
 
-		<div id="map">
+		<div id="map">	
+		
+
 
 		</div> <!-- end map div -->
 
@@ -61,9 +84,12 @@
 		</div> <!-- end previous-search div -->
 
 
+  
 
 
-
-	</div> <!-- end container div -->
+	
+	<script type="text/javascript" src="googleMapsApi.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJQ__z06-Y3H9TYepxUNOicjA-CEwGJsw&callback=initMap"
+    async defer></script>
 </body>
 </html>
