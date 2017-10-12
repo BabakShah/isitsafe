@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Is It Safe?</title>
+	<!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<!-- css links -->
+	<!-- Compiled and minified CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+	<!-- Compiled and minified JavaScript -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+	<link rel="stylesheet" href="assets/css/style.css">
+	<style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 600px;
+
+      }
+    </style>
+
+	<!-- js links -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="assets/js/javascript.js"></script>
+	<!--<script type="text/javascript" src="assets/js/api1.js"></script>-->
+	<script type="text/javascript" src="assets/js/api2.js"></script>
+	<!--<script type="text/javascript" src="assets/js/api3.js"></script>-->
+
+</head>
+
+<body>
+
+	<div class="row">
+	<div id="header" class="col s6 offset-s3">
+
+
+		<div class="caption left-align">
+          <h3>SafePad</h3>
+          <h5 class="light grey-text text-lighten-3">Search vacation rentals.</h5>
+        </div>
+
+
+	</div> <!-- end header div -->
+	</div>
+
+		<div class="row">
+			<div id="submit" class="col s12">
+
+				<div class="input-field col s6 offset-s3">
+		          <input id="location" type="text" class="validate">
+		          <label for="location">Enter Location</label>
+		        </div>
+
+				<div class="col s6 offset-s3">
+				    <p>
+				      <input type="checkbox" id="area-crime" />
+				      <label for="area-crime">Area Crime</label>
+				    </p>
+				    <p>
+				      <input type="checkbox" id="sex-offenders" />
+				      <label for="sex-offenders">Sex Offenders</label>
+				    </p>
+				    <p>
+				      <input type="checkbox" id="other-option" />
+				      <label for="other-option">Other Option</label>
+				    </p>
+				
+
+					<button id="submit-input" class="btn waves-effect waves-light" type="search" name="action">Search
+	    			<i class="material-icons right">search</i>
+	  				</button>
+	  			</div>
+	  			
+
+			</div> <!-- end sumbit div -->
+		</div> <!-- end row div -->
+
+		<div class="row">
+		<div id="map" class="col s10 offset-s1">
+		</div>
+		</div> <!-- end map div -->
+
+
+		<div class="row">
+		<div id="submit-results" class="col s7 offset-s1">
+			<h3>Submit Results</h3>
+			<table class="highlight">
+				<thead>
+					<tr>
+						<th>Location</th>
+						<th>Description</th>
+						<th>Date</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr>
+						<td>123 Elm St.</td>
+						<td>Something Bad</td>
+						<td>10/04/17</td>
+					</tr>
+					<tr>
+						<td>Crossroads</td>
+						<td>Something really bad</td>
+						<td>Yesterday</td>
+					</tr>
+					<tr>
+						<td>Your House</td>
+						<td>OMG</td>
+						<td>Tomorrow</td>
+					</tr>
+				</tbody>
+			</table>
+
+		</div> <!-- end sumbit-results div -->
+
+		<div id="previous-search" class="col s3">
+			<h4>Previous Search</h4>
+		<div class="collection">
+	        <a href="#!" class="collection-item">Glass House</a>
+	        <a href="#!" class="collection-item">Your House</a>
+	        <a href="#!" class="collection-item">My House</a>
+	        <a href="#!" class="collection-item">House Music</a>
+	        <a href="#!" class="collection-item">That one place</a>
+		</div>
+
+		</div> <!-- end previous-search div -->
+		</div>
+
+		<div class="row">
+		  <footer class="page-footer">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="white-text">Purple Cobras</h5>
+                <p class="grey-text text-lighten-4">Group Project 1</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Group Members</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2017 Cobra Kai
+            </div>
+          </div>
+        </footer>
+
+
+
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+
+      				    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 41.881832, lng: -87.623177},
+          zoom: 11
+        });
+        var geocoder = new google.maps.Geocoder();
+
+$(document).ready(function() {
+  $('#submit-input').click(function() {
+    //console.log($('#location').val());
+        var address = $('#location').val();
+        console.log(address)
+    	geocoder.geocode( { 'address': address}, function(results, status) {
+    if (status == google.maps.GeocoderStatus.OK) {
+        var latitude = results[0].geometry.location.lat();
+        var longitude = results[0].geometry.location.lng();
+        console.log(longitude)
+        console.log(latitude)
+        //jQuery('.collection-item').val(latitude+', '+longitude);
+        } 
+    });
+
+    //console.log(userInputAddress);
+  });
+});
+
+   
+      }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJQ__z06-Y3H9TYepxUNOicjA-CEwGJsw&callback=initMap"
+    async defer></script>
+
+
+
+
+
+</body>
+
+</html>
