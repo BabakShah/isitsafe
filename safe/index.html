@@ -5,6 +5,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<title>Is It Safe?</title>
+	<!--Jquery cdn-->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 	<!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -24,11 +26,7 @@
       }
     </style>
 
-	<!-- js links -->
-	<script type="text/javascript" src="assets/js/javascript.js"></script>
-	<script type="text/javascript" src="assets/js/api1.js"></script>
-	<script type="text/javascript" src="assets/js/api2.js"></script>
-	<script type="text/javascript" src="assets/js/api3.js"></script>
+	
 
 </head>
 
@@ -160,20 +158,16 @@
 
 
       <!--Import jQuery before materialize.js-->
-      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-
-      				    <script>
-      var map;
-      function initMap() {
-        map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: 41.881832, lng: -87.623177},
-          zoom: 11
-        });
-      }
-    </script>
+	
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <!-- js links -->
+    <script type="text/javascript" src="assets/js/google-maps-api.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJQ__z06-Y3H9TYepxUNOicjA-CEwGJsw&callback=initMap"
     async defer></script>
+	<!--
+	<script type="text/javascript" src="assets/js/javascript.js"></script>
+	<script type="text/javascript" src="assets/js/api2.js"></script>
+	<script type="text/javascript" src="assets/js/api3.js"></script>-->
 
 
 
