@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Is It Safe?</title>
+	<title>SafePads</title>
 	<!--Import Google Icon Font-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -12,21 +12,8 @@
 	<!-- Compiled and minified CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 	<link rel="stylesheet" href="assets/css/style.css">
-	<style>
-      /* Always set the map height explicitly to define the size of the div
-       * element that contains the map. */
-      #map {
-        height: 600px;
 
-      }
-    </style>
-
-	<!-- js links -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script type="text/javascript" src="assets/js/javascript.js"></script>
-	<!--<script type="text/javascript" src="assets/js/api1.js"></script>-->
-	<script type="text/javascript" src="assets/js/api2.js"></script>
-	<!--<script type="text/javascript" src="assets/js/api3.js"></script>-->
+	
 
 </head>
 
@@ -162,9 +149,7 @@
 
 
 
-      <!--Import jQuery before materialize.js-->
-      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+     
 
 	<script>
 
@@ -174,7 +159,7 @@
 
       
 
-	// renders google map
+	/*renders google map
 	var map;
 	function initMap() {
 		map = new google.maps.Map(document.getElementById("map"), {
@@ -282,7 +267,7 @@ $.ajax({
       firstRowTds.eq(2).text(response.date);
 
 
-}
+}*/
 
           // Looping through each result item
           /*for (var i = 0; i < results.length; i++) {
@@ -305,8 +290,8 @@ $.ajax({
             // Prependng the animalDiv to the HTML page in the "#gifs-appear-here" div
             $("#gifs-appear-here").prepend(animalDiv);
           }
-          */
-        });
+          
+        
 
 
 
@@ -316,18 +301,25 @@ $.ajax({
 
 	}); //on click end
 
-			      autocomplete = new google.maps.places.Autocomplete(
+	autocomplete = new google.maps.places.Autocomplete(
       (document.getElementById('location')),
       {types: ['geocode']});
       //autocomplete.addListener('place_changed', fillInAddress);
 	});
-	}
+	}*/
 
     </script>
     <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJQ__z06-Y3H9TYepxUNOicjA-CEwGJsw&callback=initMap" async defer></script>-->
-
-          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJQ__z06-Y3H9TYepxUNOicjA-CEwGJsw&libraries=places&callback=initMap"
-        async defer></script>
+    <!-- js links -->
+     <!--Import jQuery before materialize.js-->
+	<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+	<!-- google map api js functions link-->
+	<script type="text/javascript" src = "assets/js/google-map-api.js"></script>
+	<!-- crime api js file-->
+	<script type="text/javascript" src = "assets/js/crime-api.js"></script>
+	<!-- for the google map to show up-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJQ__z06-Y3H9TYepxUNOicjA-CEwGJsw&libraries=places&callback=initMap" async defer></script>
 
 
 
