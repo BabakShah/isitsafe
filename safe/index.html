@@ -49,8 +49,7 @@
 			<div id="submit" class="col s12">
 
 				<div class="input-field col s6 offset-s3">
-		          <input id="location" type="text" class="validate">
-		          <label for="location">Enter Location</label>
+		          <input id="location" placeholder="Enter your address" type="text" class="validate"></input> 
 		        </div>
 
 				<div class="col s6 offset-s3">
@@ -97,6 +96,11 @@
 				</thead>
 
 				<tbody>
+					<tr>
+						<td></td>
+						<td></td>
+						<td></td>
+					</tr>					
 					<tr>
 						<td>123 Elm St.</td>
 						<td>Something Bad</td>
@@ -163,6 +167,13 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
 
 	<script>
+
+
+
+      
+
+      
+
 	// renders google map
 	var map;
 	function initMap() {
@@ -172,6 +183,8 @@
 	});
 
 	var geocoder = new google.maps.Geocoder();
+
+
 
 	$(document).ready(function() {
 
@@ -204,10 +217,6 @@ $(".animate").on('click', function(event) {
 
   // grabs user input from location search 
 	$("#submit-input").click(function() {
-
-
-
-
 		
 		var address = $("#location").val();
 		console.log(address);
@@ -245,9 +254,17 @@ $.ajax({
 
           console.log(response);
           // storing the data from the AJAX request in the results variable
-          var results = response.data;
+          var results = response;
 
 		for (var i = 0; i < response.length; i++) {
+                  var block = results[i].block;
+                  console.log(block);			
+                  var description = results[i].description;
+                  console.log(description);
+                  var date = results[i].date;
+                  console.log(date);          
+
+              
 
        // Chaining several jQuery methods to achieve the following:
       var firstRowTds = $("response-data") // Get a reference to the table as a jQuery object
@@ -258,13 +275,12 @@ $.ajax({
         .children("td"); // Get an array of all <td> children inside the returned <tr>
 
       // Setting the inner text of each <td> in the firstRowTds array
-      firstRowTds.eq(0).text(response.description);
+      firstRowTds.eq(0).text(description);
 
-      firstRowTds.eq(1).text(response.location);
+      firstRowTds.eq(1).text(response.block);
 
       firstRowTds.eq(2).text(response.date);
 
-      console.log(response.description)
 
 }
 
@@ -296,12 +312,22 @@ $.ajax({
 
 	}); //
 
+
+
 	}); //on click end
+
+			      autocomplete = new google.maps.places.Autocomplete(
+      (document.getElementById('location')),
+      {types: ['geocode']});
+      //autocomplete.addListener('place_changed', fillInAddress);
 	});
 	}
 
     </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJQ__z06-Y3H9TYepxUNOicjA-CEwGJsw&callback=initMap" async defer></script>
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJQ__z06-Y3H9TYepxUNOicjA-CEwGJsw&callback=initMap" async defer></script>-->
+
+          <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJQ__z06-Y3H9TYepxUNOicjA-CEwGJsw&libraries=places&callback=initMap"
+        async defer></script>
 
 
 
