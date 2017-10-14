@@ -87,7 +87,7 @@
 		<div class="row">
 		<div id="submit-results" class="col s7 offset-s1">
 			<h3>Submit Results</h3>
-			<table class="highlight">
+			<table class="highlight response-data">
 				<thead>
 					<tr>
 						<th>Location</th>
@@ -196,15 +196,15 @@ $(".animate").on('click', function(event) {
     }
   });
 
-
-
-  // grabs user input from location search 
-	$("#submit-input").click(function() {
 		 	$("#location").keypress(function(e){
         if(e.which == 13){//Enter key pressed
             $("#submit-input").click();//Trigger search button click event
         }
     });
+
+  // grabs user input from location search 
+	$("#submit-input").click(function() {
+
 
 
 
@@ -235,7 +235,7 @@ $.ajax({
     url: queryURL,
     type: "GET",
     data: {
-      "$limit" : 5000,
+      "$limit" : 200,
       "$$app_token" : "pyfrFl35spogEJeGI7iTphR2y",
     }
 })
@@ -246,6 +246,27 @@ $.ajax({
           console.log(response);
           // storing the data from the AJAX request in the results variable
           var results = response.data;
+
+		for (var i = 0; i < response.length; i++) {
+
+       // Chaining several jQuery methods to achieve the following:
+      var firstRowTds = $("response-data") // Get a reference to the table as a jQuery object
+        .children() // Get all of table's immediate children as an array
+        .eq(1) // Get element at the first index of this returned array (the <tbody>)
+        .children("tr") // Get an array of all <tr> children inside the returned <tbody>
+        .eq(0) // Get the 0th child of this returned array (the first <tr>)
+        .children("td"); // Get an array of all <td> children inside the returned <tr>
+
+      // Setting the inner text of each <td> in the firstRowTds array
+      firstRowTds.eq(0).text(response.description);
+
+      firstRowTds.eq(1).text(response.location);
+
+      firstRowTds.eq(2).text(response.date);
+
+      console.log(response.description)
+
+}
 
           // Looping through each result item
           /*for (var i = 0; i < results.length; i++) {
