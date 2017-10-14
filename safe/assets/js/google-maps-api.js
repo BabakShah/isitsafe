@@ -1,43 +1,63 @@
-//$(document).ready(function() {
-    
-
-    //location = $("#location").val();
 
 
-	var map;
-    var loc;
+//intialize the longitude and latitude 
+var latitude = 0;
+var longitude = 0;
+var map;
+
+//intiallize the map
+function initMap() {
+	map = new google.maps.Map(document.getElementById('map'), {
+    center: {lat: 41.881832, lng: -87.623177},
+    zoom: 11
+});
 
 
-	$('#submit-button').on("click",function(event) {
-		event.preventDefault();
-		console.log($('#location').val());
-		loc = $("#location").val();
-		var locationArray = loc.split(',');
-		lat = parseInt(locationArray[0]);
-		lng = parseInt(locationArray[1]);
-		console.log(locationArray);
-		console.log(loc);
+
+
+
+$("document").ready(function(){
+
+	//when the button is clicked 
+	$("#submit-button").on("click", function() {
+	    var geocoder = new google.maps.Geocoder();
+	    var address = $('#location').val();
+    	console.log(address)
+
+
+    	//the geocoder method which is used to convert adress to long and lat
+	    geocoder.geocode( { 'address': address}, function(results, status) {
+		    if (status == google.maps.GeocoderStatus.OK) {
+		    	//returns the latitude and longitude of the address
+		        latitude = results[0].geometry.location.lat();
+		        longitude = results[0].geometry.location.lng();
+		        
+		        console.log(latitude)
+		        console.log(longitude)
+		        map.setCenter({lat: latitude, lng: longitude});
+
+
+
+	    	} 
+		});
 	});
+});
 
 
-    function initMap() {
-    	var location = {lat: 41.881832, lng: -87.623177};
-    	map = new google.maps.Map(document.getElementById('map'), {
-        center: location,
-        zoom: 11
-    });
-    var marker = new google.maps.Marker({
-    	position: location,
-    	map: map
-    });
-	/*
-	var marker = new google.maps.Marker({
-		position: location,
-		map: map
-	});*/
 
 
-	}
+
+
+
+
+/*
+var marker = new google.maps.Marker({
+	position: location,
+	map: map
+});*/
+
+
+}
 
 	
 
