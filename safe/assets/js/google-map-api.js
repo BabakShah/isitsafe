@@ -20,3 +20,5 @@ function addMarker(lat,lng){
         }
     );
 }
+
+//add marker for the address that the user inputs
