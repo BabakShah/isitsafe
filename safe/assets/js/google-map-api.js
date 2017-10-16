@@ -9,6 +9,7 @@ function initMap() {
             zoom: 11
         }
     );
+
 }
 // initialize array of markers that will be used to clear markers from the map
 var crimeMarkers = [];
@@ -21,6 +22,8 @@ function addMarker(lat,lng){
         }
     );
     crimeMarkers.push(marker);
+    map.setZoom(18);
+    map.panTo(marker.position);
 }
 
 // Removes the markers from the map,
