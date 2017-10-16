@@ -34,7 +34,8 @@ $(document).ready(function(){
 		});
 
 
-
+		//clear the markers on map before getting new data
+		clearOverlays();
 
 		//getting the address from the input box
 		var address = $("#location").val();
