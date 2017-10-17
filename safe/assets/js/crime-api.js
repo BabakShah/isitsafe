@@ -1,7 +1,39 @@
 $(document).ready(function(){
+	// Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDz4cNlkfWQVwV4sJBXgIOtITjeKexIjy0",
+      authDomain: "isitsafe-4ce15.firebaseapp.com",
+      databaseURL: "https://isitsafe-4ce15.firebaseio.com",
+      projectId: "isitsafe-4ce15",
+      storageBucket: "isitsafe-4ce15.appspot.com",
+      messagingSenderId: "366399254426"
+    };
+    firebase.initializeApp(config);
+
+    var dataRef = firebase.database();
+
+
+    //initiallize address
+    var address;
+
+    //latitude and longitude
+	var latitude;
+	var longitude;
+
 
 	// add scrolling to anchors
 	$(".animate").on('click', function(event) {
+		//getting the address from the input box
+		address = $("#location").val();
+		// Code for the push
+      	dataRef.ref().push({
+	        address: address,
+	        dateAdded: firebase.database.ServerValue.TIMESTAMP
+      	});
+
+
+        $("#address-list").empty();
+        queryFirebase();
 
 		// Make sure this.hash has a value before overriding default behavior
 		if (this.hash !== "") {
@@ -20,6 +52,19 @@ $(document).ready(function(){
 			});
 		}
 	});
+
+	//queryFirebase
+	function queryFirebase() {
+
+		var query = dataRef.ref().orderByChild('dateAdded').limitToLast(3);
+		query.on("child_added", function(snapshot){
+			var address = snapshot.val();
+			//$("#address-list").append("<div class='well'><span id='address-list'> " + snapshot.val().address);
+			$("#address-list").append("<a href='#!' class='collection-item'>" + snapshot.val().address + "</a>'");
+		});
+    }
+
+    queryFirebase();
 
 
 	//initiallize geocoder
@@ -77,9 +122,7 @@ $(document).ready(function(){
 		 	  	// storing the data from the AJAX request in the results variable
 		 	  	results = response;
 		 		
-		 		//latitude and longitude
-		 		var latitude;
-		 		var longitude;
+		 		
 
 		 		//clears the table for the new input
 		 		$("#results-table").empty();
