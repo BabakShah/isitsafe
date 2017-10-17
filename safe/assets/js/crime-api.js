@@ -1,7 +1,34 @@
 $(document).ready(function(){
+	 // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyDz4cNlkfWQVwV4sJBXgIOtITjeKexIjy0",
+      authDomain: "isitsafe-4ce15.firebaseapp.com",
+      databaseURL: "https://isitsafe-4ce15.firebaseio.com",
+      projectId: "isitsafe-4ce15",
+      storageBucket: "isitsafe-4ce15.appspot.com",
+      messagingSenderId: "366399254426"
+    };
+    firebase.initializeApp(config);
+
+    var dataRef = firebase.database();
+
+    // Initial Values
+    var address = "";
 
 	// add scrolling to anchors
 	$(".animate").on('click', function(event) {
+
+      address = $("#location").val();
+
+      // Code for the push
+      dataRef.ref().push({
+
+        address: address,
+        dateAdded: firebase.database.ServerValue.TIMESTAMP
+      });
+          $("#previous-search").empty();
+          queryFirebase();
+
 
 		// Make sure this.hash has a value before overriding default behavior
 		if (this.hash !== "") {
@@ -21,12 +48,22 @@ $(document).ready(function(){
 		}
 	});
 
+	function queryFirebase() {var query = dataRef.ref().orderByChild('dateAdded').limitToLast(3);
+      query.on("child_added", function(snapshot) {
+      var address = snapshot.val();
+             $("#previous-search").append("<li>" + "<a href='#!' class='collection-item'>" + snapshot.val().address + "</a>" + "</li>");
+                 });
+    }
+
+    queryFirebase();
+
 
 	//initiallize geocoder
 	var geocoder = new google.maps.Geocoder();
 
 	// grabs user input from location search 
 	$("#submit-input").click(function() {
+
 		$("#location").keypress(function(e){
 			if(e.which == 13){//Enter key pressed
 	    		$("#submit-input").click();//Trigger search button click event
