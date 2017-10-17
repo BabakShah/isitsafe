@@ -77,8 +77,12 @@ $(document).ready(function(){
 		 	  	// storing the data from the AJAX request in the results variable
 		 	  	results = response;
 		 		
+		 		//latitude and longitude
 		 		var latitude;
 		 		var longitude;
+
+		 		//clears the table for the new input
+		 		$("#results-table").empty();
 
 		 	  	//adding the markers for each crime to the map
 		 	  	for(var i = 0; i < results.length; i++){
@@ -103,32 +107,18 @@ $(document).ready(function(){
 					console.log("lat" + latitude);	
 					console.log("lng" + longitude);*/
 					var description = results[i].description;
-					console.log("Description: " + description);
+					console.log('Description: ' + description);
 					//format date using moment js
 					var date = moment(results[i].date).format('MMMM Do YYYY, h:mm:ss a');
 					//get type of crime
 					var crimeType = results[i].primary_type;
-					console.log("Date:" + date);  
+					console.log('Date:' + date);  
 					//adding crime info
 					addCrimeInfo(i, crimeMarkers[i], date,block,description,crimeType);
 
-
-		              
-
-		       // Chaining several jQuery methods to achieve the following:
-					var firstRowTds = $("response") // Get a reference to the table as a jQuery object
-					.children() // Get all of table's immediate children as an array
-					.eq(1) // Get element at the first index of this returned array (the <tbody>)
-					.children("tr") // Get an array of all <tr> children inside the returned <tbody>
-					.eq(0) // Get the 0th child of this returned array (the first <tr>)
-					.children("td"); // Get an array of all <td> children inside the returned <tr>
-
-					// Setting the inner text of each <td> in the firstRowTds array
-					firstRowTds.eq(0).text(description);
-
-					firstRowTds.eq(1).text(response.block);
-
-					firstRowTds.eq(2).text(response.date);
+					//add the table
+					$('#results-table').append('<tr><td>'+i+'</td><td>'+block+'</td><td>'+crimeType+' '+description+'</td><td>'+date+'</td></tr>');
+					
 		 		}
 		 		console.log(crimeMarkers);
 	 		});  //end .done function
