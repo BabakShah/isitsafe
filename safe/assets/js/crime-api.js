@@ -76,27 +76,41 @@ $(document).ready(function(){
 		 	 	console.log(response);
 		 	  	// storing the data from the AJAX request in the results variable
 		 	  	results = response;
-		 
+		 		
+		 		var latitude;
+		 		var longitude;
+
 		 	  	//adding the markers for each crime to the map
 		 	  	for(var i = 0; i < results.length; i++){
 		 	  		//get latitude and longitude from data
-		 	  		var latitude = results[i].latitude;
-		 	  		var longitude = results[i].longitude;
+		 	  		latitude = results[i].latitude;
+		 	  		longitude = results[i].longitude;
 		 	  		console.log(i);
 		 	  		console.log("longitude" + longitude);
 		 	  		console.log("latitude" + latitude);
 		 	  		//use addMarker function from the google-map-api js file
 		 	  		addMarker(latitude, longitude);
+
+
 		   		}
 		   		//adding the information to the table at the bottom of the website
 		   		for (var i = 0; i < results.length; i++) {
-		   			console.log("HI"+i);
+		   			//getting the data from the returned json object
 					var block = results[i].block;
-					console.log(block);			
+					/*
+					var address = showCrimeAddress(latitude, longitude);
+					console.log(address);
+					console.log("lat" + latitude);	
+					console.log("lng" + longitude);*/
 					var description = results[i].description;
 					console.log("Description: " + description);
-					var date = results[i].date;
-					console.log("Date:" + date);          
+					//format date using moment js
+					var date = moment(results[i].date).format('MMMM Do YYYY, h:mm:ss a');
+
+					console.log("Date:" + date);  
+					//adding crime info
+					addCrimeInfo(i, crimeMarkers[i], date,block,description);
+
 
 		              
 
@@ -115,12 +129,13 @@ $(document).ready(function(){
 
 					firstRowTds.eq(2).text(response.date);
 		 		}
-		 		
+		 		console.log(crimeMarkers);
 	 		});  //end .done function
 
 		});//end of geocode function?? for some reason all of the code regarding the api has to be inside here
     
 	}); //on click end
+
 
 
 	//this enables the Google Map API Autocomplete function for addresses

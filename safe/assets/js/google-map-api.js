@@ -15,13 +15,13 @@ function initMap() {
 var crimeMarkers = [];
 //function that adds marker to the map where the crime was commited, takes longitude, latitude
 function addMarker(lat,lng){
-    
     marker = new google.maps.Marker({
             position: new google.maps.LatLng(lat,lng),
             map: map
         }
     );
     crimeMarkers.push(marker);
+    //sets the zoom to the location that the map is
     map.setZoom(18);
     map.panTo(marker.position);
 }
@@ -32,12 +32,26 @@ function clearOverlays() {
     crimeMarkers[i].setMap(null);
   }
   crimeMarkers.length = 0;
-}
-//a function to clear the markers, does this by removing references to them
-/*
-function deleteMarkers() {
-    clearMarkers();
-    crimeMarkers = [];
-}*/
 
-//add marker for the address that the user inputs
+}
+
+// Add info windows to each marker for crime info
+function addCrimeInfo(i, marker, date, address, description){
+    //adding info
+    var crimeInfo = '<p> #' + i + '</p><p> Decription: ' + description + '</p> <p> Block: ' + address + '</p><p> Date: ' + date + "</p>";
+    var infowindow = new google.maps.InfoWindow({
+        content: crimeInfo,
+    });
+    marker.addListener('click', function(){
+        infowindow.open(map, marker);
+    });
+    console.log("Marker");
+}
+
+/*
+function showCrimeAddress(lat, lng){
+    var crimeAddress  = new google.maps.LatLng({lat: lat,lng: lng}); 
+    console.log(crimeAddress.formatted_address);
+    return crimeAddress.formatted_address;
+    
+}*/
