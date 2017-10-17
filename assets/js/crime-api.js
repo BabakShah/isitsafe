@@ -1,5 +1,21 @@
+
+// Radomizes team member list order
+var ul = document.querySelector('#random');
+for (var i = ul.children.length; i >= 0; i--) {
+    ul.appendChild(ul.children[Math.random() * i | 0]);
+}
+
 $(document).ready(function(){
-	 // Initialize Firebase
+
+
+    // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+    $('#modal-results').modal();
+    $('#modal-previous').modal();
+
+
+
+
+	// Initialize Firebase
     var config = {
       apiKey: "AIzaSyDz4cNlkfWQVwV4sJBXgIOtITjeKexIjy0",
       authDomain: "isitsafe-4ce15.firebaseapp.com",
@@ -12,23 +28,28 @@ $(document).ready(function(){
 
     var dataRef = firebase.database();
 
-    // Initial Values
-    var address = "";
+
+    //initiallize address
+    var address;
+
+    //latitude and longitude
+	var latitude;
+	var longitude;
+
 
 	// add scrolling to anchors
 	$(".animate").on('click', function(event) {
+		//getting the address from the input box
+		address = $("#location").val();
+		// Code for the push
+      	dataRef.ref().push({
+	        address: address,
+	        dateAdded: firebase.database.ServerValue.TIMESTAMP
+      	});
 
-      address = $("#location").val();
 
-      // Code for the push
-      dataRef.ref().push({
-
-        address: address,
-        dateAdded: firebase.database.ServerValue.TIMESTAMP
-      });
-          $("#address-list").empty();
-          queryFirebase();
-
+        $("#address-list").empty();
+        queryFirebase();
 
 		// Make sure this.hash has a value before overriding default behavior
 		if (this.hash !== "") {
@@ -48,12 +69,15 @@ $(document).ready(function(){
 		}
 	});
 
-	function queryFirebase() {var query = dataRef.ref().orderByChild('dateAdded').limitToLast(3);
-      query.on("child_added", function(snapshot) {
-      var address = snapshot.val();
-              //$("#address-list").append("<div class='well'><span id='address-list'> " + snapshot.val().address);
-             $("#address-list").append("<a href='#!' class='collection-item'>" + snapshot.val().address + "</a>'");
-                 });
+	//queryFirebase
+	function queryFirebase() {
+
+		var query = dataRef.ref().orderByChild('dateAdded').limitToLast(3);
+		query.on("child_added", function(snapshot){
+			var address = snapshot.val();
+			//$("#address-list").append("<div class='well'><span id='address-list'> " + snapshot.val().address);
+			$("#address-list").append("<a href='#!' class='collection-item'>" + snapshot.val().address + "</a>");
+		});
     }
 
     queryFirebase();
@@ -62,14 +86,15 @@ $(document).ready(function(){
 	//initiallize geocoder
 	var geocoder = new google.maps.Geocoder();
 
-	// grabs user input from location search 
-	$("#submit-input").click(function() {
-
-		$("#location").keypress(function(e){
+			$("#location").keypress(function(e){
 			if(e.which == 13){//Enter key pressed
 	    		$("#submit-input").click();//Trigger search button click event
 	 		}
 		});
+
+	// grabs user input from location search 
+	$("#submit-input").click(function() {
+
 
 
 		//clear the markers on map before getting new data
@@ -114,51 +139,55 @@ $(document).ready(function(){
 		 	 	console.log(response);
 		 	  	// storing the data from the AJAX request in the results variable
 		 	  	results = response;
-		 
+		 		
+		 		
+
+		 		//clears the table for the new input
+		 		$("#results-table").empty();
+
 		 	  	//adding the markers for each crime to the map
 		 	  	for(var i = 0; i < results.length; i++){
 		 	  		//get latitude and longitude from data
-		 	  		var latitude = results[i].latitude;
-		 	  		var longitude = results[i].longitude;
+		 	  		latitude = results[i].latitude;
+		 	  		longitude = results[i].longitude;
 		 	  		console.log(i);
 		 	  		console.log("longitude" + longitude);
 		 	  		console.log("latitude" + latitude);
 		 	  		//use addMarker function from the google-map-api js file
 		 	  		addMarker(latitude, longitude);
+
+
 		   		}
 		   		//adding the information to the table at the bottom of the website
 		   		for (var i = 0; i < results.length; i++) {
-		   			console.log("HI"+i);
+		   			//getting the data from the returned json object
 					var block = results[i].block;
-					console.log(block);			
+					/*
+					var address = showCrimeAddress(latitude, longitude);
+					console.log(address);
+					console.log("lat" + latitude);	
+					console.log("lng" + longitude);*/
 					var description = results[i].description;
-					console.log("Description: " + description);
-					var date = results[i].date;
-					console.log("Date:" + date);          
+					console.log('Description: ' + description);
+					//format date using moment js
+					var date = moment(results[i].date).format('MMMM Do YYYY, h:mm:ss a');
+					//get type of crime
+					var crimeType = results[i].primary_type;
+					console.log('Date:' + date);  
+					//adding crime info
+					addCrimeInfo(i, crimeMarkers[i], date,block,description,crimeType);
 
-		              
-
-		       // Chaining several jQuery methods to achieve the following:
-					var firstRowTds = $("response") // Get a reference to the table as a jQuery object
-					.children() // Get all of table's immediate children as an array
-					.eq(1) // Get element at the first index of this returned array (the <tbody>)
-					.children("tr") // Get an array of all <tr> children inside the returned <tbody>
-					.eq(0) // Get the 0th child of this returned array (the first <tr>)
-					.children("td"); // Get an array of all <td> children inside the returned <tr>
-
-					// Setting the inner text of each <td> in the firstRowTds array
-					firstRowTds.eq(0).text(description);
-
-					firstRowTds.eq(1).text(response.block);
-
-					firstRowTds.eq(2).text(response.date);
+					//add the table
+					$('#results-table').append('<tr><td>'+i+'</td><td>'+block+'</td><td>'+crimeType+' '+description+'</td><td>'+date+'</td></tr>');
+					
 		 		}
-		 		
+		 		console.log(crimeMarkers);
 	 		});  //end .done function
 
 		});//end of geocode function?? for some reason all of the code regarding the api has to be inside here
     
 	}); //on click end
+
 
 
 	//this enables the Google Map API Autocomplete function for addresses
@@ -167,3 +196,5 @@ $(document).ready(function(){
     	types: ['geocode']
     });
 });
+
+ 
