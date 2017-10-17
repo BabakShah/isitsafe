@@ -36,9 +36,9 @@ function clearOverlays() {
 }
 
 // Add info windows to each marker for crime info
-function addCrimeInfo(i, marker, date, address, description){
+function addCrimeInfo(i, marker, date, address, description, crimeType){
     //adding info
-    var crimeInfo = '<p> #' + i + '</p><p> Decription: ' + description + '</p> <p> Block: ' + address + '</p><p> Date: ' + date + "</p>";
+    var crimeInfo = '<p> #' + i + '</p><p> Decription: ' + crimeType + ' ' + description + '</p> <p> Block: ' + address + '</p><p> Date: ' + date + "</p>";
     var infowindow = new google.maps.InfoWindow({
         content: crimeInfo,
     });

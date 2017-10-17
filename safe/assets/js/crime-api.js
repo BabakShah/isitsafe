@@ -106,10 +106,11 @@ $(document).ready(function(){
 					console.log("Description: " + description);
 					//format date using moment js
 					var date = moment(results[i].date).format('MMMM Do YYYY, h:mm:ss a');
-
+					//get type of crime
+					var crimeType = results[i].primary_type;
 					console.log("Date:" + date);  
 					//adding crime info
-					addCrimeInfo(i, crimeMarkers[i], date,block,description);
+					addCrimeInfo(i, crimeMarkers[i], date,block,description,crimeType);
 
 
 		              
