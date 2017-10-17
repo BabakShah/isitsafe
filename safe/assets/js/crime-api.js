@@ -26,7 +26,7 @@ $(document).ready(function(){
         address: address,
         dateAdded: firebase.database.ServerValue.TIMESTAMP
       });
-          $("#previous-search").empty();
+          $("#address-list").empty();
           queryFirebase();
 
 
@@ -51,7 +51,8 @@ $(document).ready(function(){
 	function queryFirebase() {var query = dataRef.ref().orderByChild('dateAdded').limitToLast(3);
       query.on("child_added", function(snapshot) {
       var address = snapshot.val();
-             $("#previous-search").append("<li>" + "<a href='#!' class='collection-item'>" + snapshot.val().address + "</a>" + "</li>");
+              //$("#address-list").append("<div class='well'><span id='address-list'> " + snapshot.val().address);
+             $("#address-list").append("<a href='#!' class='collection-item'>" + snapshot.val().address + "</a>'");
                  });
     }
 
