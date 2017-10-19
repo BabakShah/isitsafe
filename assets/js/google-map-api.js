@@ -15,9 +15,20 @@ function initMap() {
 var crimeMarkers = [];
 //function that adds marker to the map where the crime was commited, takes longitude, latitude
 function addMarker(lat,lng){
+    //this will hold the path to the icon image
+    var markerIcon = null;
+    /*
+    //using indexOf to eheck if the crime is in the crimeType 
+    if(crimeType.indexOf('THEFT') !== -1){
+        console.log(crimeType.indexOf('THEFT') !== -1);
+        markerIcon = 'assets/icons/theft.png'
+    }
+    //else if(crimeType.indexOf(''))*/
+
     marker = new google.maps.Marker({
             position: new google.maps.LatLng(lat,lng),
-            map: map
+            map: map,
+            icon: markerIcon
         }
     );
     crimeMarkers.push(marker);
@@ -36,12 +47,13 @@ function clearOverlays() {
 }
 
 // Add info windows to each marker for crime info
-function addCrimeInfo(i, marker, date, address, description, crimeType){
+function addCrimeInfo(number, marker, date, address, description, crimeType){
     //adding info
-    var crimeInfo = '<p> #' + i + '</p><p> Decription: ' + crimeType + ' ' + description + '</p> <p> Block: ' + address + '</p><p> Date: ' + date + "</p>";
+    var crimeInfo = '<p> #' + number + '</p><p> Decription: ' + crimeType + ' ' + description + '</p> <p> Block: ' + address + '</p><p> Date: ' + date + "</p>";
     var infowindow = new google.maps.InfoWindow({
         content: crimeInfo,
     });
+    //added mouseover to see the info window
     marker.addListener('mouseover', function(){
         infowindow.open(map, marker);
 
@@ -49,15 +61,6 @@ function addCrimeInfo(i, marker, date, address, description, crimeType){
     marker.addListener('mouseout', function() {
     infowindow.close(map, marker);
 });
-    
-
     console.log("Marker");
 }
 
-/*
-function showCrimeAddress(lat, lng){
-    var crimeAddress  = new google.maps.LatLng({lat: lat,lng: lng}); 
-    console.log(crimeAddress.formatted_address);
-    return crimeAddress.formatted_address;
-    
-}*/

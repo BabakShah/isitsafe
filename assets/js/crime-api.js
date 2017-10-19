@@ -154,12 +154,11 @@ $(document).ready(function(){
 		 	  		console.log("longitude" + longitude);
 		 	  		console.log("latitude" + latitude);
 		 	  		//use addMarker function from the google-map-api js file
-		 	  		addMarker(latitude, longitude);
+		 	  		
+		 	  		//adding markers
+					addMarker(latitude, longitude);
 
 
-		   		}
-		   		//adding the information to the table at the bottom of the website
-		   		for (var i = 0; i < results.length; i++) {
 		   			//getting the data from the returned json object
 					var block = results[i].block;
 					/*
@@ -174,11 +173,13 @@ $(document).ready(function(){
 					//get type of crime
 					var crimeType = results[i].primary_type;
 					console.log('Date:' + date);  
+					//number for each crime has to be i + 1
+					var number = i + 1
 					//adding crime info
-					addCrimeInfo(i, crimeMarkers[i], date,block,description,crimeType);
-
+					addCrimeInfo(number, crimeMarkers[i], date,block,description,crimeType);
+					
 					//add the table
-					$('#results-table').append('<tr><td>'+i+'</td><td>'+block+'</td><td>'+crimeType+' '+description+'</td><td>'+date+'</td></tr>');
+					$('#results-table').append('<tr><td>'+number+'</td><td>'+block+'</td><td>'+crimeType+' '+description+'</td><td>'+date+'</td></tr>');
 					
 		 		}
 		 		console.log(crimeMarkers);
