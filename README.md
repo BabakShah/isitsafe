@@ -1,64 +1,101 @@
-# _**Is it safe? Project**_
+<!--# Domisssile--> 
+<center><img src="readme/logo3.png" alt="Google Maps API" width="500px"></center>
+In this project we created a web application that receives an address in Chicago from the user and searches for crime incidents and marks them on the map. It also lists all the crime incidents in the area and saves previous searches.
 
-### Team Name: 
-Team Purple Cobras
+## Getting Started
 
-### Project title: 
-Is it safe?
+You can access the application <a href="https://team-purple-cobras.github.io/isitsafe/">here</a>. Enter your desired address in the search box, Google will automatically complete the address. Click the search button. The page will center and zoom in the map, marking all the crimes within 50 meters radius in the area. Hover over the markers to find more information about the crime such as, description, block and date of the crime incident. You can select the 'Street View' to look and move around for better visualization of the incidents. To see the complete results list, click on the 'View Results List' button on the page. The application will also save the last three searches, you can see the previous searches by clicking on the 'Previous Searches' button.
 
-### Team Members: 
-Brian, Kiwon, Paige, Babak
-### Project Description:
+## What's included
 
-### Sketch of Final Product:
-1. Type in location
+Within the project folder you can find the following directories and files. You'll see something like this:
 
-2. User chooses from list of options they want want to check
-Crime data
-Crimes committed or deaths at that address
-Health API
+```
+isitsafe/
+├── assets/
+│   ├── js/
+│   │   ├── crime-api.js
+│   │   └── google-map-api.js
+│   └── icons/
+│   │   └── assault.png
+│   │   └── battery.png
+│   │   └── homicide.png
+│   │   └── misc.png
+│   │   └── narcotics.png
+│   │   └── theft.png
+│   └── css/
+│       ├── reset.css
+│       └── style.css
+├── index.html
+├── test.html
+└── README.md
+```
 
-3. Maps shows up
-Map will show data points of options user chose
-Click on data points for details 
+## Contributing
 
-4. List also shows up with all data points 
+Please feel free to submit pull requests to us for development. The following instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-5. List shows up with our Firebase data (Previous search by area, popular search,....)
+### Prerequisites
 
-### APIs to be Used:
+You need the following software for development:
 
-- Google Maps: https://developers.google.com/maps/
-- Crime API: 
-http://api1.chicagopolice.org/clearpath/ (If we just want to concentrate on Chicago)
-https://www.data.gov/safety/
-http://blog.spotcrime.com/search?q=api
+- Source code editor like Atom or Sublime Text
+- Git source control manager
+- Command line interface
+- Web browser (Microsoft Edge, Firefox, Chrome and Safari supported)
 
-### Libraries to be used:
-### Rough Breakdown of Tasks:
-##### 1. Front End:
+### Cloning Repository
 
-* UI
+Start by opening the command line and downloading the repository as follows
 
-* Html file
+```bash
+git clone https://github.com/Team-Purple-Cobras/isitsafe.git
+```
 
-* Css file (css framework)
+change the directory to the project folder and the desired source file (HTML, CSS, JS)
 
-* Js file - second library for something like animation
+```bash
+cd ./isitsafe/
+```
 
-##### 2. Back End:
+open the source files in a source code editor
 
-* Firebase
+```bash
+open -a "Sublime Text" file-name
+```
 
-* Previous searches by area
+## Built With
 
-* Popular searches
+* HTML <img src="readme/html.png" alt="Google Maps API" width="22px">
+* CSS <img src="readme/css.png" alt="Google Maps API" width="16px">
+* JS <img src="readme/JS.jpg" alt="Google Maps API" width="20px">
+* Firebase <img src="readme/firebase.png" alt="Google Maps API" width="22px">
+* Git <img src="readme/git.png" alt="Google Maps API" width="44px">
+* Command Line Interface <img src="readme/terminal.png" alt="Google Maps API" width="20px">
 
-* Js (Js file for each api)
+## APIs
 
-### Links:
-##### Google Doc: 
-https://docs.google.com/document/d/1hy6Pjz0s3_vJdmFErw4F8Mrh9seqq0LSm68hlnnyRHM/edit#
+<img src="readme/mapsapi.png" alt="Google Maps API" width="50px"> 
+<b>Google Maps API:</b> https://developers.google.com/maps/
 
-##### GitHub Repo: 
-https://github.com/Team-Purple-Cobras/isitsafe
+<img src="readme/chicagoApi.jpg" alt="Chicago Crime API" width="50px">
+<b>Chicago Crime API:</b> http://api1.chicagopolice.org/clearpath/
+
+## Libraries used:
+
+<img src="/Users/babak/Desktop/momentJS.png" alt="Chicago Crime API" width="60px">
+
+## Team 
+The list of people who participated in this project.
+
+* **Paige** - [sk8asd123@gmail.com](sk8asd123@gmail.com)
+* **Brian** - [brianhagy@gmail.com](brianhagy@gmail.com)
+* **Kiwon** - [kiwonnam2016@u.northwestern.edu](kiwonnam2016@u.northwestern.edu)
+* **Babak** - [babakshahian2022@u.northwestern.edu](shahianb@gmail.com)
+
+<!--## Acknowledgments
+
+* Hat tip to anyone who's code was used
+* Inspiration
+* etc-->
+
