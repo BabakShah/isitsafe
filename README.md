@@ -1,6 +1,6 @@
 <!--# Domisssile--> 
 <p align="center">
-	<img src="readme/logo3.png" alt="Google Maps API" width="500px"> 
+	<img src="readme/logo3.png" alt="Google Maps API" width="80%"> 
 </p>
 In this project we created a web application that receives an address in Chicago from the user and searches for crime incidents and marks them on the map. It also lists all the crime incidents in the area and saves previous searches.
 
@@ -89,7 +89,7 @@ open -a "Sublime Text" file-name
 
 <img src="./readme/mapsApi.png?raw=true" alt="Google Maps API" width="50px"> 
 <b>Google Maps API:</b> https://developers.google.com/maps/
-
+<br>
 <img src="./readme/chicagoApi.jpg?raw=true" alt="Chicago Crime API" width="50px">
 <b>Chicago Crime API:</b> http://api1.chicagopolice.org/clearpath/
 
