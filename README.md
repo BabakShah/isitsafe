@@ -78,25 +78,26 @@ open -a "Sublime Text" file-name
 
 ## Built With
 
-* HTML <img src="./readme/html.png" alt="html_logo" width="22px">
-* CSS <img src="./readme/css.png" alt="css_logo" width="16px">
-* JS <img src="./readme/JS.jpg" alt="js_logo" width="20px">
-* Firebase <img src="./readme/firebase.png" alt="firebase_logo" width="22px">
-* Git <img src="./readme/git.png" alt="git_logo" width="44px">
-* Command Line Interface <img src="./readme/terminal.png" alt="cli_logo" width="20px">
+* HTML <img src="./readme/html.png?raw=true" alt="html_logo" width="22px">
+* CSS <img src="./readme/css.png?raw=true" alt="css_logo" width="16px">
+* JS <img src="./readme/JS.jpg?raw=true" alt="js_logo" width="20px">
+* Firebase <img src="./readme/firebase.png?raw=true" alt="firebase_logo" width="22px">
+* Git <img src="./readme/git.png?raw=true" alt="git_logo" width="44px">
+* Command Line Interface <img src="./readme/terminal.png?raw=true" alt="cli_logo" width="20px">
 
 ## APIs
-<p>
-<img src="./readme/mapsapi.png" alt="Google Maps API" width="50px"> 
+
+<img src="./readme/mapsapi.png?raw=true" alt="Google Maps API" width="50px"> 
 <b>Google Maps API:</b> https://developers.google.com/maps/
-</p>
-<p>
-<img src="./readme/chicagoApi.jpg" alt="Chicago Crime API" width="50px">
+
+
+<img src="./readme/chicagoApi.jpg?raw=true" alt="Chicago Crime API" width="50px">
 <b>Chicago Crime API:</b> http://api1.chicagopolice.org/clearpath/
-</p>
+
+
 ## Libraries used:
 
-<img src="./readme/momentJS.png" alt="MomentJS" width="60px">
+<img src="./readme/momentJS.png?raw=true" alt="MomentJS" width="60px">
 
 ## Team 
 The list of people who participated in this project.
