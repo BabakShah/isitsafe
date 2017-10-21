@@ -1,10 +1,12 @@
 <!--# Domisssile--> 
-<center><img src="readme/logo3.png" alt="Google Maps API" width="500px"></center>
+<p align="center">
+	<img src="readme/logo3.png" alt="Google Maps API" width="500px"> 
+</p>
 In this project we created a web application that receives an address in Chicago from the user and searches for crime incidents and marks them on the map. It also lists all the crime incidents in the area and saves previous searches.
 
 ## Getting Started
 
-You can access the application <a href="https://team-purple-cobras.github.io/isitsafe/">here</a>. Enter your desired address in the search box, Google will automatically complete the address. Click the search button. The page will center and zoom in the map, marking all the crimes within 50 meters radius in the area. Hover over the markers to find more information about the crime such as, description, block and date of the crime incident. You can select the 'Street View' to look and move around for better visualization of the incidents. To see the complete results list, click on the 'View Results List' button on the page. The application will also save the last three searches, you can see the previous searches by clicking on the 'Previous Searches' button.
+You can access the application <a href="https://team-purple-cobras.github.io/isitsafe/" target="_blank">here</a>. Enter your desired address in the search box, Google will automatically complete the address. Click the search button. The page will center and zoom in the map, marking all the crimes within 50 meters radius in the area. Hover over the markers to find more information about the crime such as, description, block and date of the crime incident. You can select the 'Street View' to look and move around for better visualization of the incidents. To see the complete results list, click on the 'View Results List' button on the page. The application will also save the last three searches, you can see the previous searches by clicking on the 'Previous Searches' button.
 
 ## What's included
 
@@ -28,7 +30,17 @@ isitsafe/
 │       └── style.css
 ├── index.html
 ├── test.html
-└── README.md
+├── README.md
+└── readme
+ 	└── css.png
+ 	└── html.png
+	└── js.png
+	└── git.png
+	└── firebase.png
+	└── terminal.png
+	└── chicagoapi.png
+	└── mapsapi.png
+	└── logo.png
 ```
 
 ## Contributing
@@ -66,24 +78,25 @@ open -a "Sublime Text" file-name
 
 ## Built With
 
-* HTML <img src="readme/html.png" alt="Google Maps API" width="22px">
-* CSS <img src="readme/css.png" alt="Google Maps API" width="16px">
-* JS <img src="readme/JS.jpg" alt="Google Maps API" width="20px">
-* Firebase <img src="readme/firebase.png" alt="Google Maps API" width="22px">
-* Git <img src="readme/git.png" alt="Google Maps API" width="44px">
-* Command Line Interface <img src="readme/terminal.png" alt="Google Maps API" width="20px">
+* HTML <img src="./readme/html.png" alt="html_logo" width="22px">
+* CSS <img src="./readme/css.png" alt="css_logo" width="16px">
+* JS <img src="./readme/JS.jpg" alt="js_logo" width="20px">
+* Firebase <img src="./readme/firebase.png" alt="firebase_logo" width="22px">
+* Git <img src="./readme/git.png" alt="git_logo" width="44px">
+* Command Line Interface <img src="./readme/terminal.png" alt="cli_logo" width="20px">
 
 ## APIs
-
-<img src="readme/mapsapi.png" alt="Google Maps API" width="50px"> 
+<p>
+<img src="./readme/mapsapi.png" alt="Google Maps API" width="50px"> 
 <b>Google Maps API:</b> https://developers.google.com/maps/
-
-<img src="readme/chicagoApi.jpg" alt="Chicago Crime API" width="50px">
+</p>
+<p>
+<img src="./readme/chicagoApi.jpg" alt="Chicago Crime API" width="50px">
 <b>Chicago Crime API:</b> http://api1.chicagopolice.org/clearpath/
-
+</p>
 ## Libraries used:
 
-<img src="/Users/babak/Desktop/momentJS.png" alt="Chicago Crime API" width="60px">
+<img src="./readme/momentJS.png" alt="MomentJS" width="60px">
 
 ## Team 
 The list of people who participated in this project.
